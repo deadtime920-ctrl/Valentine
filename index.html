@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Kavina, Be My Valentine ❤️</title>
+
   <style>
     body {
       margin: 0;
@@ -18,11 +19,12 @@
 
     .card {
       background: white;
-      padding: 40px;
+      padding: 35px 30px;
       border-radius: 25px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.25);
       z-index: 2;
-      max-width: 300px;
+      max-width: 320px;
+      width: 90%;
     }
 
     h1 {
@@ -32,6 +34,7 @@
 
     p {
       font-size: 18px;
+      margin: 10px 0;
     }
 
     button {
@@ -62,6 +65,22 @@
       background: #ff4d6d;
       color: white;
       margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 20px;
+      margin: 15px auto;
+      display: block;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .footer {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #888;
     }
 
     .heart {
@@ -82,23 +101,20 @@
         opacity: 0;
       }
     }
-
-    .footer {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #888;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Music -->
-  <audio id="music" loop>
+  <!-- Romantic Music (mobile-safe) -->
+  <audio id="music" loop muted>
     <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes_Music/Romantic/Scott_Holmes_Music_-_05_-_Together.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card">
     <h1>Kavina 💖</h1>
+
+    <img src="us.jpg" alt="Us together" class="photo">
+
     <p>Will you be my Valentine? 🌹</p>
 
     <button id="yes" onclick="yesClick()">Yes 💘</button>
@@ -121,7 +137,10 @@
 
     function playMusic() {
       const music = document.getElementById("music");
-      music.play();
+      music.muted = false;
+      music.play().catch(() => {
+        alert("Tap anywhere once, then tap the music button again 💖");
+      });
       document.getElementById("musicBtn").style.display = "none";
     }
 
@@ -129,8 +148,12 @@
       document.body.innerHTML = `
         <div class="card">
           <h1>You said YES 😭❤️</h1>
+
+          <img src="us.jpg" class="photo">
+
           <p>Kavina, you make my world brighter every single day.</p>
           <p>I’m so lucky to have you 🥹🌹</p>
+
           <div class="footer">Forever yours,<br>Kishan ❤️</div>
         </div>
       `;
